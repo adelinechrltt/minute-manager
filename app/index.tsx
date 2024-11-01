@@ -2,9 +2,11 @@ import { ActivityIndicator, Text, View } from "react-native";
 import { Provider } from "react-redux";
 import * as Font from 'expo-font';
 
+
 import store from "@/components/store/store.js";
 import List from "@/components/List";
 import { useEffect, useState } from "react";
+import { SplashScreen } from "./screens/SplashScreenView";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -19,8 +21,13 @@ const loadFonts = async () => {
 export default function Index() {
 
   const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [isShowSplash, setIsShowSplash] = useState(true);
 
   useEffect(() => {
+    // setTimeout(() => {
+    //   setIsShowSplash(false);
+    // }, 3000);
+
     const loadFontsAsync = async () => {
       await loadFonts();
       setFontsLoaded(true);
@@ -35,19 +42,16 @@ export default function Index() {
 
 
   return (
-    <Provider store={store}>
-      
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
 
-        <List></List>
-      </View>
-    
-    </Provider>
+    <>
+
+      {isShowSplash ? <SplashScreen/> :
+       
+        <Provider store={store}>
+          <p>asdfsdfsdf</p>
+        </Provider>
+
+      }
+    </>
   );
 }
