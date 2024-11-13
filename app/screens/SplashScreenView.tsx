@@ -8,6 +8,11 @@ export function SplashScreen(){
             <SafeAreaProvider>
                 <SafeAreaView style={styles.container} className="align-center">
                     <img style={styles.img} src="../../../assets/images/SplashScreenStar.png"/>
+                    <h1 style={{
+                      lineHeight: '140%',
+                      padding: 20,
+                      textAlign: 'center'
+                    }}><span style={styles.minuteStyling}>minute</span><br/><span style={styles.managerStyling}>manager</span></h1>
                 </SafeAreaView>
             </SafeAreaProvider>
         </LinearGradient>
@@ -19,7 +24,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    height: "100%"
+    height: "100%",
+    display: "flex",
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 8
   },
   title: {
     marginTop: 16,
@@ -35,5 +44,15 @@ const styles = StyleSheet.create({
   },
   img: {
     maxWidth: "15%",
+  }, 
+  minuteStyling: {
+    fontFamily: 'Livvic-SemiBold',
+    fontSize: 36,
+    color: '#449DCF'
+  },
+  managerStyling: {
+    fontFamily: 'Spectral-Medium',
+    fontSize: 36,
+    color: '#114865'
   }
 });
