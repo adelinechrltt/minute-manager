@@ -14,7 +14,7 @@ export function SplashScreen(){
               justifyContent: "center",
               gap: 50,
               }} colors={['#F3EBDB', '#F2EBDD', '#EAF0EE', '#E6F2F5', '#E1F5FF']}>
-                <Image style={styles.img} source={require("../../assets/images/SplashScreenStar.png")}/>
+                <Image source={require("../../assets/images/SplashScreenStar.png")}/>
                 <View>
                   <Text style={styles.minuteStyling}>minute</Text><Text style={styles.managerStyling}>manager</Text>    
                 </View>
@@ -47,8 +47,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
   },
-  img: {
-  }, 
   minuteStyling: {
     fontFamily: 'Livvic-SemiBold',
     fontSize: 36,

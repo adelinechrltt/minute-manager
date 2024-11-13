@@ -7,6 +7,7 @@ import store from "@/components/store/store.js";
 import List from "@/components/List";
 import { useEffect, useState } from "react";
 import { SplashScreen } from "./screens/SplashScreenView";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -24,9 +25,9 @@ export default function Index() {
   const [isShowSplash, setIsShowSplash] = useState(true);
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   setIsShowSplash(false);
-    // }, 3000);
+    setTimeout(() => {
+      setIsShowSplash(false);
+    }, 3000);
 
     const loadFontsAsync = async () => {
       await loadFonts();
@@ -42,10 +43,10 @@ export default function Index() {
 
 
   return (
-
     <>
-      
-      <SplashScreen></SplashScreen>
+      {isShowSplash === true ? <SplashScreen></SplashScreen> : 
+        <List type='done'/>
+      }
     </>
   );
 }
