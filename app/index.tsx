@@ -44,14 +44,8 @@ export default function Index() {
   return (
 
     <>
-
-      {isShowSplash ? <SplashScreen/> :
-       
-        <Provider store={store}>
-          <p>asdfsdfsdf</p>
-        </Provider>
-
-      }
+      
+      <SplashScreen></SplashScreen>
     </>
   );
 }

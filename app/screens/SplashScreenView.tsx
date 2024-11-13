@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { Image } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -7,12 +8,8 @@ export function SplashScreen(){
         <LinearGradient colors={['#F3EBDB', '#F2EBDD', '#EAF0EE', '#E6F2F5', '#E1F5FF']}>
             <SafeAreaProvider>
                 <SafeAreaView style={styles.container} className="align-center">
-                    <img style={styles.img} src="../../../assets/images/SplashScreenStar.png"/>
-                    <h1 style={{
-                      lineHeight: '140%',
-                      padding: 20,
-                      textAlign: 'center'
-                    }}><span style={styles.minuteStyling}>minute</span><br/><span style={styles.managerStyling}>manager</span></h1>
+                    <Image style={styles.img} src="../../../assets/images/SplashScreenStar.png"/>
+                    {/* <Text style={styles.minuteStyling}>minute{"\n"}</Text><Text style={styles.managerStyling}>manager</Text>`` */}
                 </SafeAreaView>
             </SafeAreaProvider>
         </LinearGradient>
