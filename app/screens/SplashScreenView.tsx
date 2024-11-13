@@ -1,31 +1,39 @@
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { Image } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 
 export function SplashScreen(){
     return (
-        <LinearGradient colors={['#F3EBDB', '#F2EBDD', '#EAF0EE', '#E6F2F5', '#E1F5FF']}>
-            <SafeAreaProvider>
-                <SafeAreaView style={styles.container} className="align-center">
-                    <Image style={styles.img} src="../../../assets/images/SplashScreenStar.png"/>
-                    {/* <Text style={styles.minuteStyling}>minute{"\n"}</Text><Text style={styles.managerStyling}>manager</Text>`` */}
-                </SafeAreaView>
-            </SafeAreaProvider>
-        </LinearGradient>
-
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container} className="align-center">
+            <LinearGradient style={{
+              flex: 1, 
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 50,
+              }} colors={['#F3EBDB', '#F2EBDD', '#EAF0EE', '#E6F2F5', '#E1F5FF']}>
+                <Image style={styles.img} source={require("../../assets/images/SplashScreenStar.png")}/>
+                <View>
+                  <Text style={styles.minuteStyling}>minute</Text><Text style={styles.managerStyling}>manager</Text>    
+                </View>
+            </LinearGradient>
+        </SafeAreaView>
+      </SafeAreaProvider>
     );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
+    padding: 0,
     height: "100%",
+    width: "100%",
     display: "flex",
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 8
+    margin: 0
   },
   title: {
     marginTop: 16,
@@ -40,16 +48,20 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   img: {
-    maxWidth: "15%",
   }, 
   minuteStyling: {
     fontFamily: 'Livvic-SemiBold',
     fontSize: 36,
-    color: '#449DCF'
+    color: '#449DCF',
+    textAlign: 'center'
+    // backgroundColor: "red"
   },
   managerStyling: {
     fontFamily: 'Spectral-Medium',
     fontSize: 36,
-    color: '#114865'
+    color: '#114865',
+    lineHeight: 40,
+    textAlign: 'center'
+    // backgroundColor: "green"
   }
 });
