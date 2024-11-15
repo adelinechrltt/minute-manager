@@ -22,8 +22,9 @@ export function Button({type}: ButtonProps){
 
 const styles = StyleSheet.create({
     button: {
-        minHeight: 60,
-        minWidth: "44%",
+        minHeight: 50,
+        flex: 1,
+        minWidth: "47%",
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',

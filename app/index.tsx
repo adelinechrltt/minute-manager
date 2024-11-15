@@ -8,7 +8,7 @@ import List from "@/components/List";
 import { useEffect, useState } from "react";
 import { SplashScreen } from "./screens/SplashScreenView";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { Task } from "@/components/Task";
+import { TaskCard } from "@/components/TaskCard";
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -46,7 +46,7 @@ export default function Index() {
   return (
     <>
       {isShowSplash === true ? <SplashScreen></SplashScreen> : 
-        <Task></Task>
+        <TaskCard></TaskCard>
       }
     </>
   );
