@@ -10,9 +10,9 @@ const DATA = [
     id: '1',
     title: 'First Item',
     description: "asdasdasd",
-    date: '',
+    // date: '',
     priority: 'urgent',
-    isDone: ''
+    completed: false
   }
 ];
 
@@ -71,7 +71,8 @@ const List = ({type}: ListProps) => (
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-around",
-          margin: 10
+          margin: 10,
+          gap: 4
         }}>
           <Button type="add"/>
           <Button type="delete"/>
@@ -87,9 +88,9 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0,
   },
   list: {
-    paddingHorizontal: 3,
-    paddingVertical: 30,
-    borderRadius: 40,
+    paddingHorizontal: 1,
+    paddingVertical: 20,
+    borderRadius: 30,
     elevation: 10,
 
     alignItems: "center",

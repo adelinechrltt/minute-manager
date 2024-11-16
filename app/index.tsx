@@ -1,14 +1,21 @@
 import { ActivityIndicator, Text, View } from "react-native";
 import { Provider } from "react-redux";
 import * as Font from 'expo-font';
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import store from "@/components/store/store.js";
 import List from "@/components/List";
 import { useEffect, useState } from "react";
+
+
 import { SplashScreen } from "./screens/SplashScreenView";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { TaskCard } from "@/components/TaskCard";
+import { MyTodos } from "./screens/MyTodos";
+
+const Stack = createNativeStackNavigator();
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -46,7 +53,15 @@ export default function Index() {
   return (
     <>
       {isShowSplash === true ? <SplashScreen></SplashScreen> : 
-        <TaskCard></TaskCard>
+        // <NavigationContainer>
+        //   <Stack.Navigator>
+        //     <Stack.Screen
+        //       name="Home">
+        //     </Stack.Screen>
+        //   </Stack.Navigator>
+        // </NavigationContainer>
+        
+        <MyTodos></MyTodos>
       }
     </>
   );

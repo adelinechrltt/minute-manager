@@ -4,13 +4,14 @@ import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Button } from "./Button";
 
-type ItemProps = {title: string, description: string, priority: string};
+type ItemProps = {title: string, description: string, priority: string, completed: boolean};
   
 export function TaskCard({
     type = "",
     title = "Sample Task",
     description = "This is a sample description for testing.",
-    priority = "Urgency"
+    priority = "Urgent",
+    completed
 }: { type: string } & ItemProps) {
     return(
         <SafeAreaProvider>
@@ -59,7 +60,7 @@ export function TaskCard({
                     <View style={styles.body}>
                         <View style={styles.textBody}>
                             
-                            <View style={{gap: 3}}>
+                            {/* <View style={{gap: 3}}>
                                 <TouchableOpacity style={styles.inlineText}>
                                     <Image source={require("../assets/images/Calendar.png")}/>
                                     <Text style={styles.touchableText}>Date added: </Text>
@@ -69,7 +70,7 @@ export function TaskCard({
                                     <Image source={require("../assets/images/Star.png")}/>
                                     <Text style={[styles.touchableText, {color: "#8CB08A"}]}>Date completed: </Text>
                                 </View>
-                            </View>
+                            </View> */}
 
                             <Text style={{
                                 fontFamily: "Livvic-Medium",
