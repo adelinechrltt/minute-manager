@@ -54,15 +54,24 @@ export default function Index() {
   return (
     <>
       {isShowSplash === true ? <SplashScreen></SplashScreen> : 
+        // app already created with router, so already wrapped with navcontainer
+        // (npx create-expo-app@latest --with-router)
+
         // <NavigationContainer>
-        //   <Stack.Navigator>
-        //     <Stack.Screen
-        //       name="Home">
-        //     </Stack.Screen>
-        //   </Stack.Navigator>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="List"
+              component={MyTodos}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Details"
+              component={TodoDetails}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
         // </NavigationContainer>
         
-        <TodoDetails></TodoDetails>
       }
     </>
   );
