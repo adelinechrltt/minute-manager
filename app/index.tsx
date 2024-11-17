@@ -16,7 +16,7 @@ import { TaskCard } from "@/components/TaskCard";
 import { MyTodos } from "./screens/MyTodos";
 import { TodoDetails } from "./screens/TodoDetails";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -52,7 +52,7 @@ export default function Index() {
 
 
   return (
-    <>
+    <Provider store={store}>
       {isShowSplash === true ? <SplashScreen></SplashScreen> : 
         // app already created with router, so already wrapped with navcontainer
         // (npx create-expo-app@latest --with-router)
@@ -60,7 +60,7 @@ export default function Index() {
         // <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
-              name="List"
+              name="Home"
               component={MyTodos}
               options={{ headerShown: false }}
             />
@@ -73,6 +73,6 @@ export default function Index() {
         // </NavigationContainer>
         
       }
-    </>
+    </Provider>
   );
 }
