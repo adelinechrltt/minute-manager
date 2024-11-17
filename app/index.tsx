@@ -8,12 +8,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import store from "@/components/store/store.js";
 import List from "@/components/List";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 
 import { SplashScreen } from "./screens/SplashScreenView";
 import { TaskCard } from "@/components/TaskCard";
 import { MyTodos } from "./screens/MyTodos";
+import { TodoDetails } from "./screens/TodoDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -61,7 +62,7 @@ export default function Index() {
         //   </Stack.Navigator>
         // </NavigationContainer>
         
-        <MyTodos></MyTodos>
+        <TodoDetails></TodoDetails>
       }
     </>
   );

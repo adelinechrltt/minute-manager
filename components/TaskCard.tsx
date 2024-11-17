@@ -15,7 +15,7 @@ export function TaskCard({
 }: { type: string } & ItemProps) {
     return(
         <SafeAreaProvider>
-            <SafeAreaView style={{backgroundColor: "blue"}}>
+            <SafeAreaView>
                 <View style={styles.container}>
                     
                     {/* header */}
@@ -117,7 +117,14 @@ const styles = StyleSheet.create({
         padding: 2,
         borderRadius: 20,
         
-        gap: 8
+        gap: 8,
+
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+
+        elevation: 4
     }, 
     header: {
         display: "flex",
