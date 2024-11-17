@@ -5,7 +5,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import List from "@/components/List";
 
-export function MyTodos(){
+export function CompletedTodos(){
     return(
         <SafeAreaProvider>
             <SafeAreaView style={{
@@ -21,34 +21,34 @@ export function MyTodos(){
                     gap: 18,
                     paddingHorizontal: 20
                 }}>
-                    <Image source={require("../../assets/images/Star4_Blue.png")}/>
+                    <Image source={require("../../assets/images/Star4_Green.png")}/>
                     <View style={{
                         flexDirection: "row",
                         alignItems: "center",
                         gap: 5
                     }}>
                         <Text style={{
-                            fontFamily: "Livvic-SemiBold",
-                            fontSize: 36,
-                            color: "#449DCF"
-                        }}>My</Text>
-                        <Text style={{
                             fontFamily: "Spectral-Medium",
                             fontSize: 28,
                             color: "#FFF",
-                            backgroundColor: "#114865",
+                            backgroundColor: "#8DB08A",
                             borderRadius: 20,
                             paddingHorizontal: 9,
                             textAlignVertical: "center"
-                        }}>to-do.</Text>
+                        }}>Completed</Text>
+                        <Text style={{
+                            fontFamily: "Livvic-SemiBold",
+                            fontSize: 36,
+                            color: "#114865"
+                        }}>tasks</Text>
                     </View>
                 </View>
                 
-                <List type=""></List>
+                <List type="done"></List>
                 
                 {/* Button */}
                 <TouchableOpacity style={{maxWidth: "50%", alignSelf: "center"}}>
-                    <LinearGradient colors={["#6D8D6C", "#89AD88"]}
+                    <LinearGradient colors={["#2279AD", "#449DCF"]}
                     style={{
                         flexDirection: "row",
                         borderRadius: 12,
@@ -58,14 +58,15 @@ export function MyTodos(){
                         alignItems: "center",
                         gap: 10
                     }}>
+                        <Image source={require("../../assets/images/WArrow_Left.png")}/>
+
                         <Text style={{
                             fontFamily: "Livvic-SemiBold",
                             fontSize: 13,
                             color: "#FFF"
                         }}>
-                            View Completed Tasks
+                            View To-Do List
                         </Text>
-                        <Image source={require("../../assets/images/WArrow_Right.png")}/>
                     </LinearGradient>
                 </TouchableOpacity>
 

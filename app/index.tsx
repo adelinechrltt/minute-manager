@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { SplashScreen } from "./screens/SplashScreenView";
 import { TaskCard } from "@/components/TaskCard";
 import { MyTodos } from "./screens/MyTodos";
+import { CompletedTodos } from "./screens/CompletedTodos";
 
 const Stack = createNativeStackNavigator();
 
@@ -61,7 +62,7 @@ export default function Index() {
         //   </Stack.Navigator>
         // </NavigationContainer>
         
-        <MyTodos></MyTodos>
+        <CompletedTodos></CompletedTodos>
       }
     </>
   );
