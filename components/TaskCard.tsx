@@ -4,7 +4,7 @@ import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Button } from "./Button";
 
-type ItemProps = {id: string, title: string, description: string, priority: string, completed: boolean};
+type ItemProps = {id: string, title: string, description: string, priority: string};
   
 export function TaskCard({
     id, 
@@ -12,7 +12,6 @@ export function TaskCard({
     title = "Sample Task",
     description = "This is a sample description for testing.",
     priority = "Urgent",
-    completed
 }: { type: string } & ItemProps) {
     return(
         <SafeAreaProvider>
@@ -150,6 +149,7 @@ const styles = StyleSheet.create({
     titleText: {
         fontFamily: "Livvic-Bold",
         fontSize: 16,
+        maxWidth: "80%",
     },
     urgency: {
         fontFamily: "Livvic-SemiBold",

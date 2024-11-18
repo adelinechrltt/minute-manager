@@ -67,6 +67,9 @@ export default function Index() {
             <Stack.Screen
               name="Details"
               component={TodoDetails}
+              initialParams={{
+                id: "1"
+              }}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

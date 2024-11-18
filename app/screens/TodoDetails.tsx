@@ -6,15 +6,24 @@ import {Dimensions} from 'react-native';
 
 import { useState } from "react";
 import { TaskCard } from "@/components/TaskCard";
+import { RouteProp } from "@react-navigation/native";
+import { selectTaskById } from "@/components/store/reducers/todoReducer";
+import { useSelector } from "react-redux";
 
-export function TodoDetails(){
-    const [showCompleted, setShowCompleted] = useState(false);
+type DetailsScreenProps = {
+    route: RouteProp<RootStackParamList, 'Details'>;
+};
+
+
+export function TodoDetails( { route }: DetailsScreenProps ){
     const windowHeight = Dimensions.get('window').height;
 
+    const { id } = route.params;
+    const selectedTask = useSelector(state => selectTaskById(state, id));
 
     return(
         <SafeAreaProvider>
-            <ImageBackground source={showCompleted===false ? require("../../assets/images/DetailsBG_Complete.png") : require("../../assets/images/DetailsBG_Incomplete.png")} style={{flex: 1}}>
+            <ImageBackground source={selectedTask.priority!=="Done" ? require("../../assets/images/DetailsBG_Complete.png") : require("../../assets/images/DetailsBG_Incomplete.png")} style={{flex: 1}}>
                 <SafeAreaView style={{
                     display: "flex",
                     flex: 1,
@@ -25,7 +34,7 @@ export function TodoDetails(){
                 }}>
                         
                     {/* Heading */}
-                    { showCompleted === false ? <View style={{
+                    { selectedTask.priority!=="Done" ? <View style={{
                         flexDirection: "row",
                         alignItems: "center",
                         gap: 18,
@@ -86,7 +95,11 @@ export function TodoDetails(){
                         </View>
                     </View>}
                     
-                    {(showCompleted === false) ? <TaskCard/> : <TaskCard priority="Done"/>}
+                    <TaskCard
+                        id={selectedTask.id}
+                        title={selectedTask.title}
+                        description={selectedTask.description}
+                        priority={selectedTask.priority} type={""}/>
 
                 </SafeAreaView>
             </ImageBackground>

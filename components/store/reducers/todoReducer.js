@@ -8,6 +8,10 @@ let initialState = {
     ]
 }
 
+export const selectTaskById = (state, id) => {
+  return state.todos.todo.find(task => task.id === id);
+};
+
 const todoReducer = (state = initialState, action) => {
     switch(action.type){
         default: 
