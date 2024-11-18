@@ -6,7 +6,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import store from "@/components/store/store.js";
+import store from "@/components/store/store";
 import List from "@/components/List";
 import React, { useEffect, useState } from "react";
 

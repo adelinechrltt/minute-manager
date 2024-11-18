@@ -6,20 +6,11 @@ import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { Button } from './Button';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
-const DATA = [
-  {
-    id: '1',
-    title: 'First Item',
-    description: "asdasdasd",
-    // date: '',
-    priority: 'urgent',
-    completed: false
-  }
-];
 
 type ItemProps = {title: string, description: string, priority: string, id: string};
-const Item = ({title, description, priority, id}: ItemProps) => {
+const Item = ({id, title, description, priority}: ItemProps) => {
   return (
     <View style={styles.item}>
 
@@ -27,22 +18,22 @@ const Item = ({title, description, priority, id}: ItemProps) => {
           <Image source={require("../assets/images/Unchecked.png")}/>
       </TouchableOpacity>
       {
-        priority === 'urgent' ? <Image source={require("../assets/images/Urgent.png")}/> :
-          priority === 'important' ? <Image source={require("../assets/images/Important.png")}/> : <></>
+        priority === 'Urgent' ? <Image source={require("../assets/images/Urgent.png")}/> :
+          priority === 'Important' ? <Image source={require("../assets/images/Important.png")}/> : <></>
       }
       <View style={{
-        minWidth: "50%",
+        width: "70%"
       }}>
         <Text style={{
           fontFamily: 'Livvic-SemiBold',
           fontSize: 16,
           color: '#1572A2'
-        }}>{title}</Text>
+        }} numberOfLines={1}>{title}</Text>
         <Text style={{
           fontFamily: 'Livvic-SemiBold',
           fontSize: 16,
           color: '#646464'
-        }}>{description}</Text>
+        }} numberOfLines={1}>{description}</Text>
       </View>
 
 
@@ -60,17 +51,29 @@ type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
 type ListProps = { type: string };
 const List = ({type}: ListProps) => {
   const navigation = useNavigation<NavigationProps>();
+  const todos = useSelector((state: RootState) => state.todos.todo)
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
         <LinearGradient style={styles.list} colors={type==='done' ? ['#83C0B9', '#BAD8B1', '#E5E2D8'] : ['#E5E2D8', '#9BC6E1', '#6397B6'] }>
           <FlatList
-            data={DATA}
-            renderItem={({item}) => 
-              <TouchableOpacity onPress={() => navigation.navigate('Details', {id: item.id})}>
-                <Item title={item.title} description={item.description} priority={item.priority} id={item.id} />
-              </TouchableOpacity>
+            data={todos}
+            renderItem={({item}) =>{
+              if (type !== "done" && item.priority !== "Done") {
+                return (
+                  <TouchableOpacity onPress={() => navigation.navigate('Details', { id: item.id })}>
+                    <Item id={item.id} title={item.title} description={item.description} priority={item.priority} />
+                  </TouchableOpacity>
+                );
+              } else if (type === "done" && item.priority === "Done") {
+                return (
+                  <TouchableOpacity onPress={() => navigation.navigate('Details', { id: item.id })}>
+                    <Item id={item.id} title={item.title} description={item.description} priority={item.priority} />
+                  </TouchableOpacity>
+                );
               }
+              return null;
+            }}
             keyExtractor={item => item.id}
           />
           <View style={{
@@ -100,6 +103,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     borderRadius: 30,
     elevation: 10,
+    maxHeight: "96%",
 
     alignItems: "center",
     justifyContent: "center"

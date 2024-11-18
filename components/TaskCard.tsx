@@ -4,9 +4,10 @@ import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Button } from "./Button";
 
-type ItemProps = {title: string, description: string, priority: string, completed: boolean};
+type ItemProps = {id: string, title: string, description: string, priority: string, completed: boolean};
   
 export function TaskCard({
+    id, 
     type = "",
     title = "Sample Task",
     description = "This is a sample description for testing.",
