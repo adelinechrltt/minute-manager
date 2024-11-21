@@ -14,7 +14,7 @@ export const addTodo = (todoTitle, todoDesc, todoPriority) => {
 
 export const completeTodo = (id) => {
     return {
-      type: "Complete_TODO",
+      type: "UpdateCompletion",
       payload: id,
     }
 };

@@ -14,6 +14,15 @@ export const selectTaskById = (state, id) => {
 
 const todoReducer = (state = initialState, action) => {
     switch(action.type){
+        case "UpdateCompletion_TODO": 
+            let updateTodo = state.todo.map((t) => {
+                if (t.id === action.payload) {
+                return { ...t, completed: !t.completed };
+                } else {
+                return t;
+                }
+            });
+        
         default: 
             return state;
     }

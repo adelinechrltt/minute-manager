@@ -85,14 +85,14 @@ export function TaskCard({
                         
                         {type === "New" ? 
                             <View style={styles.buttons}>
-                                <Button type="addCircled"/>
+                                <Button type="addCircled" onPress={() => {}}/>
                             </View>
                          :
                             
                             <View style={styles.buttons}>
-                                {priority!=="Done" && <Button type="OK"/>}
-                                {priority==="Done" && <Button type="move"/>}
-                                <Button type="delete"/>
+                                {priority!=="Done" && <Button type="OK" onPress={() => {}} />}
+                                {priority==="Done" && <Button type="move" onPress={() => {}}/>}
+                                <Button type="delete" onPress={() => {}}/>
                             </View>
                         }
                     </View>

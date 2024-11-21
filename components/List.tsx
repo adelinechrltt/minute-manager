@@ -84,8 +84,8 @@ const List = ({type}: ListProps) => {
             margin: 10,
             gap: 4
           }}>
-            {type !== "done" && <Button type="add"/>}
-            <Button type="delete"/>
+            {type !== "done" && <Button type="add" onPress={() => {}}/>}
+            <Button type="delete" onPress={() => {}}/>
           </View>
         </LinearGradient>
       </SafeAreaView>
