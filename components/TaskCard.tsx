@@ -2,10 +2,18 @@ import { View, Text, StyleSheet, TouchableOpacity, Touchable } from "react-nativ
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
 import { Button } from "./Button";
 
+import { useDispatch } from "react-redux";
+import {deleteTodo, completeTodo, reopenTodo} from "./store/actions/todoAction.js"
+
 type ItemProps = {id: string, title: string, description: string, priority: string};
-  
+type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
+
 export function TaskCard({
     id, 
     type = "",
@@ -13,6 +21,25 @@ export function TaskCard({
     description = "This is a sample description for testing.",
     priority = "Urgent",
 }: { type: string } & ItemProps) {
+
+    const dispatch = useDispatch();
+
+    const handleCompleteTodo = () => {
+        dispatch(completeTodo(id));
+        navigation.navigate("Home");
+    }
+
+    const handleReopenTodo = () => {
+        dispatch(reopenTodo(id));
+        navigation.navigate("Home");
+    }
+
+    const handleDeleteTodo = () => {
+        dispatch(deleteTodo(id))
+    }
+
+    const navigation = useNavigation<NavigationProps>();
+
     return(
         <SafeAreaProvider>
             <SafeAreaView>
@@ -29,13 +56,13 @@ export function TaskCard({
                                 {priority==='Urgent' && <Image source={require(("../assets/images/Urgent.png"))}/>}
                                 {priority==='Important' && <Image source={require(("../assets/images/Important.png"))}/>}
                                 {priority==='Done' && <Image source={require(("../assets/images/Done.png"))}/>}
-                                {priority==='Urgency' && <Image source={require(("../assets/images/Unknown.png"))}/>}
+                                {priority==='' && <Image source={require(("../assets/images/Unknown.png"))}/>}
                                 {priority !== "Done" &&
                                     <Text style={[styles.urgency,
                                         priority==="Urgent" && {backgroundColor: "#C17264"},
                                         priority==="Important" && {backgroundColor: "#EDB64A"},
-                                        priority==="Urgency" && {backgroundColor: "#C4C0BA"},
-                                    ]}>{priority}</Text>
+                                        priority==="" && {backgroundColor: "#C4C0BA"},
+                                    ]}>{priority !== "" ? priority : "Urgency"}</Text>
                                 }
                             </View>
 
@@ -90,8 +117,8 @@ export function TaskCard({
                          :
                             
                             <View style={styles.buttons}>
-                                {priority!=="Done" && <Button type="OK" onPress={() => {}} />}
-                                {priority==="Done" && <Button type="move" onPress={() => {}}/>}
+                                {priority!=="Done" && <Button type="OK" onPress={handleCompleteTodo} />}
+                                {priority==="Done" && <Button type="move" onPress={handleReopenTodo}/>}
                                 <Button type="delete" onPress={() => {}}/>
                             </View>
                         }

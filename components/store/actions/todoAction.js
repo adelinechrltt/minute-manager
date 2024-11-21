@@ -14,7 +14,14 @@ export const addTodo = (todoTitle, todoDesc, todoPriority) => {
 
 export const completeTodo = (id) => {
     return {
-      type: "UpdateCompletion",
+      type: "Complete_TODO",
+      payload: id,
+    }
+};
+
+export const reopenTodo = (id) => {
+    return {
+      type: "Reopen_TODO",
       payload: id,
     }
 };

@@ -3,10 +3,12 @@ import React from 'react';
 import {View, FlatList, StyleSheet, Text, StatusBar, Image, TouchableOpacity} from 'react-native';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
-import { Button } from './Button';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
+
 import { useSelector } from 'react-redux';
+
+import { Button } from './Button';
 
 
 type ItemProps = {title: string, description: string, priority: string, id: string};
